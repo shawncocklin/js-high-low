@@ -1,0 +1,22 @@
+{
+  "name": "js-high-low",
+  "version": "1.0.0",
+  "description": "",
+  "main": "highlow.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawncocklin/js-high-low.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shawncocklin/js-high-low/issues"
+  },
+  "homepage": "https://github.com/shawncocklin/js-high-low#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
