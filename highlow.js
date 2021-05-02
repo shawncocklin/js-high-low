@@ -1,9 +1,13 @@
+//reference to the readline-sync library
 const rs = require("readline-sync");
+
+//variables for the basic gameplay loop
 let startingNum = 0;
 let aiNum = 0;
 let playerStrikes = 0;
 let playerPoints = 0;
 
+//functions for logic control
 function getRandomNum() {
   return Math.floor(Math.random() * ((100 - 1) + 1));
 }
@@ -21,11 +25,13 @@ function getAINum(startNum) {
 function addPoint() {
   playerPoints++;
   console.log('Correct! You get 1 point!');
+  displayScore();
 }
 
 function addStrike() {
   playerStrikes++;
-  console.log(`Sorry, you are incorrect. That's strike ${playerStrikes}. ${3 - playerStrikes} more strikes and it's game over!`)
+  console.log(`Sorry, you are incorrect. That's strike ${playerStrikes}. ${3 - playerStrikes} more strikes and it's game over!`);
+  displayScore();
   if (playerStrikes >= 3) {
     gameOver();
   }
@@ -37,6 +43,7 @@ function displayScore() {
 
 function gameOver() {
   console.log('That\'s strike three! GAME OVER.');
+  console.log(`Final score: ${playerPoints}`);
   startGame = false;
 }
 
@@ -50,13 +57,14 @@ function playGame() {
   else {
     addStrike();
   }
-  displayScore();
-}
-
-const startGame = rs.keyInYN('Would you like to play a game of High or Low?');
-
-//(!startGame) ? console.log('Ok, goodbye!') : playGame();
-while(startGame) {
-  playGame();
   
 }
+
+//core gameplay loop
+let startGame = rs.keyInYN('Would you like to play a game of High or Low?');
+
+while(startGame) {
+  playGame();
+}
+
+console.log('Goodbye!');
