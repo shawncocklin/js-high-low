@@ -12,8 +12,7 @@ RULES:
   7. After the 3rd strike, you are given a game over message and the final score, and the console bids you farewell
 
 FUNCTIONALITY TO BE ADDED:
-  1. Adding an additional prompt asking if the player would like to keep playing
-    a. Currently, the only way to end the game is to get 3 strikes.
+  1. 
 
 BUGS:
   1. Please describe any bugs below:

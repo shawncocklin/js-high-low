@@ -43,8 +43,12 @@ function displayScore() {
 
 function gameOver() {
   console.log('That\'s strike three! GAME OVER.');
-  console.log(`Final score: ${playerPoints}`);
   startGame = false;
+}
+
+function goodbye() {
+  console.log(`Final score: ${playerPoints}`);
+  console.log('Goodbye!');
 }
 
 function playGame() {
@@ -57,6 +61,8 @@ function playGame() {
   else {
     addStrike();
   }
+
+  startGame = rs.keyInYN('Would you like to keep playing?');
   
 }
 
@@ -67,4 +73,9 @@ while(startGame) {
   playGame();
 }
 
-console.log('Goodbye!');
+if(playerPoints <= 0) {
+  console.log('Goodbye!');
+}
+else {
+  goodbye();
+}
