@@ -15,5 +15,9 @@ RULES:
 FUNCTIONALITY TO BE ADDED:
   1. 
 
-BUGS:
+KNOWN BUGS:
+  1. The display number and the AI number can sometimes be 0. My original method of preventing 0 from being an option did not work, and in one case resulted in the AI choosing an undefined value for a number. Does not affect overall playability, essentially is a free point for the player any time the display number is 0.
+  2. Some of the console logs related to the player score can be grammatically weird  
+
+REPORTED BUGS:
   1. Please describe any bugs below:
