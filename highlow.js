@@ -9,7 +9,7 @@ let playerPoints = 0;
 
 //functions for logic control
 function getRandomNum() {
-  return Math.floor(Math.random() * ((100 - 1) + 1));
+  return Math.floor(Math.random() * 100);
 }
 
 function getAINum(startNum) {
@@ -24,17 +24,22 @@ function getAINum(startNum) {
 
 function addPoint() {
   playerPoints++;
-  console.log('Correct! You get 1 point!');
+  console.log(`Correct! My number was ${aiNum}. You get 1 point!`);
   displayScore();
+  startGame = rs.keyInYN('Would you like to keep playing?');
 }
 
-function addStrike() {
+function addStrike(maxStrikes) {
   playerStrikes++;
-  console.log(`Sorry, you are incorrect. That's strike ${playerStrikes}. ${3 - playerStrikes} more strikes and it's game over!`);
-  displayScore();
-  if (playerStrikes >= 3) {
+  if(playerStrikes < maxStrikes) {
+    console.log(`Sorry, you are incorrect. My number was ${aiNum}. That's strike ${playerStrikes}. ${maxStrikes - playerStrikes} more strikes and it's game over!`);
+    displayScore();
+  }
+  else {
     gameOver();
   }
+  
+  startGame = rs.keyInYN('Would you like to keep playing?');
 }
 
 function displayScore() {
@@ -43,6 +48,9 @@ function displayScore() {
 
 function gameOver() {
   console.log('That\'s strike three! GAME OVER.');
+  console.log(`Final score: ${playerPoints}`);
+  playerPoints = 0;
+  playerStrikes = 0;
   startGame = false;
 }
 
@@ -59,11 +67,8 @@ function playGame() {
     addPoint();
   }
   else {
-    addStrike();
+    addStrike(3);
   }
-
-  startGame = rs.keyInYN('Would you like to keep playing?');
-  
 }
 
 //core gameplay loop
