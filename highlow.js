@@ -14,7 +14,7 @@ function getRandomNum() {
 
 function getAINum(startNum) {
   let num = getRandomNum();
-  while (num == startNum) {
+  while (num === startNum) {
     num = getRandomNum();
   }
   return num;
