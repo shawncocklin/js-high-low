@@ -2,10 +2,10 @@
 const rs = require("readline-sync");
 
 //variables for the basic gameplay loop
-let startingNum = 0;
-let aiNum = 0;
-let playerStrikes = 0;
-let playerPoints = 0;
+var aiNum = 0;
+var playerStrikes = 0;
+var playerPoints = 0;
+var maxStrikes = 3;
 
 //functions for logic control
 function getRandomNum() {
@@ -13,13 +13,11 @@ function getRandomNum() {
 }
 
 function getAINum(startNum) {
-  num = getRandomNum();
-  if(num === startNum) {
+  let num = getRandomNum();
+  while (num === startNum) {
     num = getRandomNum();
   }
-  else{
-    return num;
-  }
+  return num;
 }
 
 function addPoint() {
@@ -29,7 +27,7 @@ function addPoint() {
   startGame = rs.keyInYN('Would you like to keep playing?');
 }
 
-function addStrike(maxStrikes) {
+function addStrike() {
   playerStrikes++;
   if(playerStrikes < maxStrikes) {
     console.log(`Sorry, you are incorrect. My number was ${aiNum}. That's strike ${playerStrikes}. ${maxStrikes - playerStrikes} more strikes and it's game over!`);
@@ -60,19 +58,18 @@ function goodbye() {
 }
 
 function playGame() {
-  startingNum = getRandomNum();
+  let startingNum = getRandomNum();
   aiNum = getAINum(startingNum);
   const prompt = rs.question(`Is the number I am thinking of higher or lower than ${startingNum}? `, {limit: ['higher', 'lower'], limitMessage: 'Sorry, please input \'higher\' or \'lower\' '});
   if ((prompt === 'higher' && aiNum > startingNum) || (prompt === 'lower' && aiNum < startingNum)) {
     addPoint();
   }
   else {
-    addStrike(3);
+    addStrike();
   }
 }
 
-//core gameplay loop
-let startGame = rs.keyInYN('Would you like to play a game of High or Low?');
+var startGame = rs.keyInYN('Would you like to play a game of High or Low?');
 
 while(startGame) {
   playGame();
